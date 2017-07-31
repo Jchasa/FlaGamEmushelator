@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
-using System.Linq;
+using System.Data.OleDb;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,10 +34,7 @@ namespace FlashGameEmulator
             {
                 flashgamespathtextBox.Text = fbd.SelectedPath;
                 string foldername = fbd.SelectedPath;
-                foreach (string f in Directory.GetFiles(foldername))
-                 this.main1listBox.Items.Add(Path.GetFileNameWithoutExtension(f));
-
-
+          
             }
         }
         //Save Game Path Button
@@ -55,6 +52,25 @@ namespace FlashGameEmulator
         //On form load
         private void Main_Load(object sender, EventArgs e)
         {
+           
+            try
+            {
+                //database connection from my DB Class
+                OleDbConnection cn = DatabaseConnection.openConnection();
+
+                cn.Open();
+
+                checkConnection.Text = "Connection Succesful";
+
+                // TODO: This line of code loads data into the 'gameDBDataSet.GameData' table. You can move, or remove it, as needed.
+                this.gameDataTableAdapter.Fill(this.gameDBDataSet.GameData);
+
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error " + ex);
+            }
 
             //Check if file isn there and then creates it 
             if (!File.Exists(rootDirectory + "\\FlashGameDirectory.txt"))
@@ -67,7 +83,13 @@ namespace FlashGameEmulator
                 {
                     flashgamespathtextBox.Text = sr.ReadLine();
                 }
+
             
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
