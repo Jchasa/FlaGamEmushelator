@@ -23,18 +23,6 @@ namespace FlashGameEmulator.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\'UserFlashGameDirectory\'")]
-        public string UserFlashGameDirectory {
-            get {
-                return ((string)(this["UserFlashGameDirectory"]));
-            }
-            set {
-                this["UserFlashGameDirectory"] = value;
-            }
-        }
-        
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
@@ -42,6 +30,15 @@ namespace FlashGameEmulator.Properties {
         public string GameDBConnectionString {
             get {
                 return ((string)(this["GameDBConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FirstRun {
+            get {
+                return ((bool)(this["FirstRun"]));
             }
         }
     }

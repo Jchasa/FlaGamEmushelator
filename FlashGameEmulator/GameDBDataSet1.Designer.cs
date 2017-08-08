@@ -279,8 +279,6 @@ namespace FlashGameEmulator {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class GameDataDataTable : global::System.Data.TypedTableBase<GameDataRow> {
             
-            private global::System.Data.DataColumn columnGame_ID;
-            
             private global::System.Data.DataColumn columnTitle;
             
             private global::System.Data.DataColumn columnYear_Made;
@@ -292,6 +290,8 @@ namespace FlashGameEmulator {
             private global::System.Data.DataColumn columnImage;
             
             private global::System.Data.DataColumn columnSeries;
+            
+            private global::System.Data.DataColumn columnGame_ID;
             
             private global::System.Data.DataColumn columnFile_Location;
             
@@ -326,14 +326,6 @@ namespace FlashGameEmulator {
             protected GameDataDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Game_IDColumn {
-                get {
-                    return this.columnGame_ID;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -386,6 +378,14 @@ namespace FlashGameEmulator {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Game_IDColumn {
+                get {
+                    return this.columnGame_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn File_LocationColumn {
                 get {
                     return this.columnFile_Location;
@@ -432,13 +432,13 @@ namespace FlashGameEmulator {
             public GameDataRow AddGameDataRow(string Title, string Year_Made, string Publisher, string Developer, string Image, string Series, string File_Location) {
                 GameDataRow rowGameDataRow = ((GameDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         Title,
                         Year_Made,
                         Publisher,
                         Developer,
                         Image,
                         Series,
+                        null,
                         File_Location};
                 rowGameDataRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGameDataRow);
@@ -469,21 +469,19 @@ namespace FlashGameEmulator {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnGame_ID = base.Columns["Game ID"];
                 this.columnTitle = base.Columns["Title"];
                 this.columnYear_Made = base.Columns["Year Made"];
                 this.columnPublisher = base.Columns["Publisher"];
                 this.columnDeveloper = base.Columns["Developer"];
                 this.columnImage = base.Columns["Image"];
                 this.columnSeries = base.Columns["Series"];
+                this.columnGame_ID = base.Columns["Game ID"];
                 this.columnFile_Location = base.Columns["File Location"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnGame_ID = new global::System.Data.DataColumn("Game ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGame_ID);
                 this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTitle);
                 this.columnYear_Made = new global::System.Data.DataColumn("Year Made", typeof(string), null, global::System.Data.MappingType.Element);
@@ -496,21 +494,23 @@ namespace FlashGameEmulator {
                 base.Columns.Add(this.columnImage);
                 this.columnSeries = new global::System.Data.DataColumn("Series", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSeries);
+                this.columnGame_ID = new global::System.Data.DataColumn("Game ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGame_ID);
                 this.columnFile_Location = new global::System.Data.DataColumn("File Location", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFile_Location);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnGame_ID}, true));
-                this.columnGame_ID.AutoIncrement = true;
-                this.columnGame_ID.AutoIncrementSeed = -1;
-                this.columnGame_ID.AutoIncrementStep = -1;
-                this.columnGame_ID.AllowDBNull = false;
-                this.columnGame_ID.Unique = true;
                 this.columnTitle.MaxLength = 255;
                 this.columnYear_Made.MaxLength = 255;
                 this.columnPublisher.MaxLength = 255;
                 this.columnDeveloper.MaxLength = 255;
                 this.columnImage.MaxLength = 536870910;
                 this.columnSeries.MaxLength = 255;
+                this.columnGame_ID.AutoIncrement = true;
+                this.columnGame_ID.AutoIncrementSeed = -1;
+                this.columnGame_ID.AutoIncrementStep = -1;
+                this.columnGame_ID.AllowDBNull = false;
+                this.columnGame_ID.Unique = true;
                 this.columnFile_Location.MaxLength = 536870910;
             }
             
@@ -654,17 +654,6 @@ namespace FlashGameEmulator {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Game_ID {
-                get {
-                    return ((int)(this[this.tableGameData.Game_IDColumn]));
-                }
-                set {
-                    this[this.tableGameData.Game_IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Title {
                 get {
                     try {
@@ -756,6 +745,17 @@ namespace FlashGameEmulator {
                 }
                 set {
                     this[this.tableGameData.SeriesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Game_ID {
+                get {
+                    return ((int)(this[this.tableGameData.Game_IDColumn]));
+                }
+                set {
+                    this[this.tableGameData.Game_IDColumn] = value;
                 }
             }
             
@@ -1019,20 +1019,19 @@ namespace FlashGameEmulator.GameDBDataSet1TableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "GameData";
-            tableMapping.ColumnMappings.Add("Game ID", "Game ID");
             tableMapping.ColumnMappings.Add("Title", "Title");
             tableMapping.ColumnMappings.Add("Year Made", "Year Made");
             tableMapping.ColumnMappings.Add("Publisher", "Publisher");
             tableMapping.ColumnMappings.Add("Developer", "Developer");
             tableMapping.ColumnMappings.Add("Image", "Image");
             tableMapping.ColumnMappings.Add("Series", "Series");
+            tableMapping.ColumnMappings.Add("Game ID", "Game ID");
             tableMapping.ColumnMappings.Add("File Location", "File Location");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `GameData` WHERE ((`Game ID` = ?) AND ((? = 1 AND `Title` IS NULL) OR (`Title` = ?)) AND ((? = 1 AND `Year Made` IS NULL) OR (`Year Made` = ?)) AND ((? = 1 AND `Publisher` IS NULL) OR (`Publisher` = ?)) AND ((? = 1 AND `Developer` IS NULL) OR (`Developer` = ?)) AND ((? = 1 AND `Series` IS NULL) OR (`Series` = ?)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `GameData` WHERE (((? = 1 AND `Title` IS NULL) OR (`Title` = ?)) AND ((? = 1 AND `Year Made` IS NULL) OR (`Year Made` = ?)) AND ((? = 1 AND `Publisher` IS NULL) OR (`Publisher` = ?)) AND ((? = 1 AND `Developer` IS NULL) OR (`Developer` = ?)) AND ((? = 1 AND `Series` IS NULL) OR (`Series` = ?)) AND (`Game ID` = ?))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Game_ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Game ID", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Title", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Title", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Title", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Title", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Year_Made", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Year Made", global::System.Data.DataRowVersion.Original, true, null));
@@ -1043,6 +1042,7 @@ namespace FlashGameEmulator.GameDBDataSet1TableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Developer", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Developer", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Series", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Series", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Series", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Series", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Game_ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Game ID", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO `GameData` (`Title`, `Year Made`, `Publisher`, `Developer`, `Image`, " +
@@ -1057,7 +1057,7 @@ namespace FlashGameEmulator.GameDBDataSet1TableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("File_Location", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "File Location", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `GameData` SET `Title` = ?, `Year Made` = ?, `Publisher` = ?, `Developer` = ?, `Image` = ?, `Series` = ?, `File Location` = ? WHERE ((`Game ID` = ?) AND ((? = 1 AND `Title` IS NULL) OR (`Title` = ?)) AND ((? = 1 AND `Year Made` IS NULL) OR (`Year Made` = ?)) AND ((? = 1 AND `Publisher` IS NULL) OR (`Publisher` = ?)) AND ((? = 1 AND `Developer` IS NULL) OR (`Developer` = ?)) AND ((? = 1 AND `Series` IS NULL) OR (`Series` = ?)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `GameData` SET `Title` = ?, `Year Made` = ?, `Publisher` = ?, `Developer` = ?, `Image` = ?, `Series` = ?, `File Location` = ? WHERE (((? = 1 AND `Title` IS NULL) OR (`Title` = ?)) AND ((? = 1 AND `Year Made` IS NULL) OR (`Year Made` = ?)) AND ((? = 1 AND `Publisher` IS NULL) OR (`Publisher` = ?)) AND ((? = 1 AND `Developer` IS NULL) OR (`Developer` = ?)) AND ((? = 1 AND `Series` IS NULL) OR (`Series` = ?)) AND (`Game ID` = ?))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Title", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Title", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Year_Made", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Year Made", global::System.Data.DataRowVersion.Current, false, null));
@@ -1066,7 +1066,6 @@ namespace FlashGameEmulator.GameDBDataSet1TableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Image", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Image", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Series", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Series", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("File_Location", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "File Location", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Game_ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Game ID", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Title", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Title", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Title", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Title", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Year_Made", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Year Made", global::System.Data.DataRowVersion.Original, true, null));
@@ -1077,6 +1076,7 @@ namespace FlashGameEmulator.GameDBDataSet1TableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Developer", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Developer", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Series", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Series", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Series", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Series", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Game_ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Game ID", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1092,8 +1092,8 @@ namespace FlashGameEmulator.GameDBDataSet1TableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [Game ID], Title, [Year Made], Publisher, Developer, [Image], Series, [Fil" +
-                "e Location] FROM GameData";
+            this._commandCollection[0].CommandText = "SELECT Title, [Year Made], Publisher, Developer, [Image], Series, [File Location]" +
+                ", [Game ID] FROM GameData";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1154,47 +1154,47 @@ namespace FlashGameEmulator.GameDBDataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Game_ID, string Original_Title, string Original_Year_Made, string Original_Publisher, string Original_Developer, string Original_Series) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Game_ID));
+        public virtual int Delete(string Original_Title, string Original_Year_Made, string Original_Publisher, string Original_Developer, string Original_Series, int Original_Game_ID) {
             if ((Original_Title == null)) {
                 throw new global::System.ArgumentNullException("Original_Title");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Title));
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Title));
             }
             if ((Original_Year_Made == null)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Year_Made));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Year_Made));
             }
             if ((Original_Publisher == null)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Publisher));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_Publisher));
             }
             if ((Original_Developer == null)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Developer));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_Developer));
             }
             if ((Original_Series == null)) {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_Series));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_Series));
             }
+            this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_Game_ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1278,7 +1278,7 @@ namespace FlashGameEmulator.GameDBDataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Title, string Year_Made, string Publisher, string Developer, string Image, string Series, string File_Location, int Original_Game_ID, string Original_Title, string Original_Year_Made, string Original_Publisher, string Original_Developer, string Original_Series) {
+        public virtual int Update(string Title, string Year_Made, string Publisher, string Developer, string Image, string Series, string File_Location, string Original_Title, string Original_Year_Made, string Original_Publisher, string Original_Developer, string Original_Series, int Original_Game_ID) {
             if ((Title == null)) {
                 throw new global::System.ArgumentNullException("Title");
             }
@@ -1321,46 +1321,46 @@ namespace FlashGameEmulator.GameDBDataSet1TableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(File_Location));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Game_ID));
             if ((Original_Title == null)) {
                 throw new global::System.ArgumentNullException("Original_Title");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Title));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Title));
             }
             if ((Original_Year_Made == null)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Year_Made));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Year_Made));
             }
             if ((Original_Publisher == null)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Publisher));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Publisher));
             }
             if ((Original_Developer == null)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Developer));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Developer));
             }
             if ((Original_Series == null)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_Series));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_Series));
             }
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_Game_ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
